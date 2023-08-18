@@ -4,12 +4,13 @@ from numpy import exp
 from numpy import sqrt
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
+
 config = {
-    "font.family": 'serif',
+    "font.family": "serif",
     "font.size": 15,
-    "mathtext.fontset": 'cm',
-    "font.serif": ['Times New Roman'],
-    "axes.unicode_minus": False
+    "mathtext.fontset": "cm",
+    "font.serif": ["Times New Roman"],
+    "axes.unicode_minus": False,
 }
 rcParams.update(config)
 
@@ -52,27 +53,28 @@ def ue_vis_burg(xx, tt, mmu, ghx, ghw):
 
 
 def burgers_gt(ts):
-    mu = 0.01/np.pi
+    mu = 0.01 / np.pi
     n = 256
-    x = np.linspace(0, 2*np.pi, n)
-    us = np.zeros((256,len(ts)))
+    x = np.linspace(0, 2 * np.pi, n)
+    us = np.zeros((256, len(ts)))
     for i in range(len(ts)):
         t = ts[i]
-        if t >0:
+        if t > 0:
             u = vis_burg(x, t, mu, gx, gw)
         else:
             u = np.sin(x)
-        us[:,i] = u
+        us[:, i] = u
     return us
 
+
 def burgers_gt_x_t(X_T):
-    mu = 0.01/np.pi
-    U = np.zeros((len(X_T),1))
+    mu = 0.01 / np.pi
+    U = np.zeros((len(X_T), 1))
     for i in range(len(X_T)):
         x, t = X_T[i]
-        t = t*np.pi
-        x = (x+1)*np.pi
-        if t >0:
+        t = t * np.pi
+        x = (x + 1) * np.pi
+        if t > 0:
             u = vis_burg_point(x, t, mu, gx, gw)
         else:
             u = np.sin(x)
@@ -80,9 +82,7 @@ def burgers_gt_x_t(X_T):
     return U
 
 
-
-
-'''
+"""
 print('x[5] =', x[5])
 print('u[5] =', u[5])
 print('max u =', np.max(u))
@@ -96,4 +96,4 @@ ax.grid(c='lightgray', linestyle='--')
 fig.tight_layout()
 plt.minorticks_on()
 plt.show()
-'''
+"""
